@@ -1,3 +1,20 @@
+def Palindrome(S):
+
+    for i in range(len(S)):
+
+        if s[i] != s[len(S)-1-i]:
+            return False
+        return True
+
+s = input()
+print(s)
+if Palindrome(s):
+    print('입력하신 단어는 회문(Palindrome)입니다.')
+else:
+    
+"""
+#1 조건문
+
 S = input()
 
 list = []
@@ -18,8 +35,10 @@ else:
             if len(list) == len(S):
                 print(S)
                 print('입력하신 단어는 회문(Palindrome)입니다.')
+"""
     
-
+"""
+#2 함수
 # def palindromeCheck(m_str):
    
 #    for i in range(0, len(m_str)):
@@ -34,3 +53,4 @@ else:
 #    print("입력하신 단어는 회문(Palindrome)입니다.")
 # else :
 #    print("입력하신 단어는 회문(Palindrome)이 아닙니다.")
+"""
