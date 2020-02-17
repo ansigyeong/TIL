@@ -11,4 +11,3 @@ for i in dicBase:
     temp = [k for k in inputWord if i[0] <= k <= i[1]]
     result.append(temp)
 print(result)
-
