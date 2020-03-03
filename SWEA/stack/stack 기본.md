@@ -26,7 +26,7 @@
 
 
 
-### 슈더코드
+### 슈도코드
 
 ```python
 def push(item):
