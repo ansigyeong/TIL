@@ -150,7 +150,60 @@ def selectionSort(a):
 
 
 
+### 퀵 정렬
 
+- 퀵 정렬과 합병 정렬의 비교
+
+  - 공통점
+
+  주어진 리스트를 두 개로 분할하고, 각각을 정렬함
+
+  - 차이점
+
+  |                          합병 정렬                          |                           퀵 정렬                            |
+  | :---------------------------------------------------------: | :----------------------------------------------------------: |
+  |            분할할 때, 단순하게 두 부분으로 나눔             | 분할할 때, 기준 아이템(Pivot Item)을 중심으로, 이보다 **작은 것은 왼편, 큰 것은 오른편**에 위치시킴 |
+  | 각 부분 정렬이 끝난 후, **'합병'이란 후처리 작업이 필요함** |   각 부분 정렬이 끝난 후, **후처리 작업이 필요하지 않음**    |
+
+  평균 시간 복잡도: O(nlogn)
+
+  최악의 시간 복잡도는 O(n²) -> 합병정렬에 비해 좋지 못함
+
+  
+
+  <퀵 정렬 슈도 코드>
+
+   ```python
+  def quickSort(a, begin, end):
+    if begin < end:
+      p = partition(a, begin, end)
+      quickSort(a, begin, p-1)
+      quickSort(a, p+1, end)
+   ```
+
+  <주어진 리스트에서 피봇을 구하는 알고리즘>
+
+  ```python
+  def partition(a, begin, end):
+    pivot = (begin + end) // 2
+    L = begin
+    R = end
+    while L < R:
+      while a[L] < a[pivot] and L < R:
+        L += 1
+      while a[R] >= a[pivot] and L < R:
+        R -= 1
+      if L < R:
+        if L == pivot:
+          pivot = R
+          a[L], a[R] = a[R], a[L]
+    a[pivot], a[R] = a[R], a[pivot]
+    return R
+  ```
+
+  
+
+  
 
 
 
