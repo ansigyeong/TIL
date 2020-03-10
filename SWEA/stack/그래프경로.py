@@ -9,6 +9,9 @@ def dfs(S):
         if adj[S][i] == 1 and visited[i] == 0:
             dfs(i)
 
+import sys
+sys.stdin = open('그래프경로.txt')
+
 T = int(input())
 
 for tc in range(1, T+1):

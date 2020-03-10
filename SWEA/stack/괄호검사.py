@@ -1,4 +1,7 @@
-T = 1
+import sys
+sys.stdin = open('괄호검사.txt')
+
+T = int(input())
 
 for tc in range(1, T+1):
     test = input()

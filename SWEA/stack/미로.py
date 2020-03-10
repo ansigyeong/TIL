@@ -30,6 +30,9 @@ def findStart(data):
             if maze[y][x] == 2:
                 return y, x
 
+import sys
+sys.stdin = open('미로.txt')
+
 T = int(input())
 
 for tc in range(1, T+1):

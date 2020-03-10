@@ -4,6 +4,9 @@ def paper(N):
         result.append(2 * result[i - 2] + result[i - 1])
     return result[-1]
 
+import sys
+sys.stdin = open('종이붙이기.txt')
+
 T = int(input())
 
 for tc in range(1, T + 1):
