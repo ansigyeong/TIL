@@ -36,7 +36,7 @@ DFS(v):
       v의 인접 정점 중 방문 안 한 w찾기
     }
     v <- pop(stack)
-  }while(v)
+  }while(v)s
 end DFS()
 ```
 
