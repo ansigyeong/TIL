@@ -9,6 +9,7 @@ def dfs(y, x, matrix):
     return
 
 import sys
+sys.setrecursionlimit(10**8)
 read = lambda : sys.stdin.readline().strip()
 
 T = int(read())
