@@ -1,32 +1,40 @@
-from copy import deepcopy
-
-def findSafeArea(height):
-    copyArr = deepcopy(arr)
-    for i in range(n):
-        for j in range(n):
-            if arr[i][j] <= height:
-                copyArr[i][j] = 0
-    checkSafeNumber()
-
-def checkSafeNumber():
-    global copyArr
-    dx = [0, 0, -1, 1]
-    dy = [-1, 1, 0, 0]
-    for i in range(n):
-        for j in range(n):
-            if copyArr
-    for k in range(4):
-
-
 import sys
-read = lambda : sys.stdin.readline().strip().split()
+sys.setrecursionlimit(10**8)
+import copy
 
-n = int(read()) # 2 이상 100 이하 정수
-arr = [[int(i) for i in read()] for _ in range(n)] # 1 이상 100 이하 정수
 
-max_safe_area = 0
+def dfs(x, y, copyArr):
+    for k in range(4):
+        nx = x + dx[k]
+        ny = y + dy[k]
+        if 0 <= nx < n and 0 <= ny < n and copyArr[nx][ny]:
+            copyArr[nx][ny] = 0 # 방문 체크
+            dfs(nx, ny, copyArr)
 
-for i in range(100):
-    findSafeArea(i)
 
-print(max_safe_area)
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+maxList = []
+result = 1
+for i in range(n):
+    maxList.append(max(arr[i]))
+maxValue = max(maxList)
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+
+for height in range(1, maxValue + 1):
+    copyArr = copy.deepcopy(arr)
+    for i in range(n):
+        for j in range(n):
+            if copyArr[i][j] <= height:
+                copyArr[i][j] = 0
+    count = 0
+    for x in range(n):
+        for y in range(n):
+            if copyArr[x][y]:
+                dfs(x, y, copyArr)
+                count += 1
+    if result < count:
+        result = count
+
+print(result)
