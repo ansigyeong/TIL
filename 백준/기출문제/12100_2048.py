@@ -20,7 +20,7 @@ def move(arr, dir):
                 continue
             x, y = i, j
             value = arr[x][y]
-            
+
 
 
 def bfs(arr):
