@@ -6,15 +6,25 @@
 
 
 
+0. git flow 생성
+
+   ```bash
+   $ git flow init # develop 생성됨
+   ```
+
+   
+
 1. 브랜치 생성
 
     ```bash
     (master) $ git branch {브랜치명}
     ```
-
+    
+    
     
 
-2. 브랜치 이동
+
+3. 브랜치 이동
 
     ```bash
     (master) $ git checkout {브랜치명}
@@ -22,7 +32,7 @@
 
     
 
-3. 브랜치 생성 및 이동
+4. 브랜치 생성 및 이동
 
     ```bash
     (master) $ git checkout -b {브랜치명}
@@ -30,7 +40,15 @@
 
     
 
-4. 브랜치 삭제
+5. branch 1에서 branch2 생성 및 이동
+
+    ```bash
+    $ git checkout -b {branch2} {branch1}
+    ```
+
+    
+
+6. 브랜치 삭제
 
     ```bash
     (master) $ git branch -d {브랜치명}
@@ -38,23 +56,45 @@
 
     
 
-5. 브랜치 목록
+7. 브랜치 목록
 
     ```bash
     (master) $ git branch
     ```
 
-    
-
-6. 브랜치 병합
-
     ```bash
-    (master) $ git merge {브랜치명}
+    $ git branch -a # 로컬 및 원격 저장소에 연결된 branch 확인
     ```
 
-	* master 브랜치에서 {브랜치명}을 병합
-	
-	
+    ```bash
+    $ git branch -r # 원격 저장소에 있는 branch 목록 확인
+    ```
+
+    
+
+8. branch 반영
+
+    ```bash
+    $ git remote update # 원격 저장소에 있는 branch를 로컬 저장소에 반영
+    ```
+
+    ```bash
+    $ git checkout -t {branch} # 원격 저장소에 있는 branch를 로컬에 복사 및 이동
+    ```
+
+    ```bash
+    $ git push origin {branch} # 로컬 저장소에 있는 branch를 원격 저장소에 반영
+    ```
+
+    
+
+9. 브랜치 병합
+
+    ```bash
+    (master) $ git merge {브랜치명} # master 브랜치에서 {브랜치명}을 병합
+    ```
+
+     
 
 ## 2. branch 병합 시나리오
 
