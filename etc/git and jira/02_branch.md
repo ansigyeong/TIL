@@ -88,6 +88,20 @@
 
     
 
+    ### develop 변경사항을 feature로 가져오기 (Optional)
+
+    작업을 할 때 브랜치의 수명은 되도록 짧게 가져가는 게 좋지만, feature 브랜치에서 기능을 완료하는데 해야 할 작업들이 많아서 오래 걸리는 경우 들이 있습니다. 그러다 보면 develop에 추가된 기능들이 필요한 경우가 종종 생기게 됩니다. 그럴 때는 feature 브랜치에 develop의 변경사항들을 가져와야 합니다.
+
+    1. feature-user 브랜치에 upstream/develop 브랜치를 merge 합니다.
+
+       > (feature-user)]gitfetchupstream(feature−user)]gitfetchupstream(feature−user)] git merge --no-ff upstream/develop
+
+    2. upstream/develop의 변경사항이 merge된 feature-user를 upstream에 push 합니다.
+
+       > (feature-user)]$ git push upstream feature-user
+
+    
+
 9. 브랜치 병합
 
     ```bash
