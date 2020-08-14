@@ -12,13 +12,12 @@ def check_shape(arr, shape):
                         value += arr[start_y + y][start_x + x]
             max_sum = max(max_sum, value)
 
-
 def rotate(shape):
     return [list(reversed(i)) for i in list(map(list, zip(*shape)))]
 
 import sys
-
-N, M = map(int, sys.stdin.readline().split())
+# 4개 => 테트로미노
+N, M = map(int, sys.stdin.readline().split()) # 세로, 가로
 arr = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 max_sum = 0
 
@@ -51,7 +50,6 @@ shape5 = [
     [1, 1],
     [1, 0]
 ]
-
 shape_list = [line, box, shape1, shape2, shape3, shape4, shape5]
 
 for shape in shape_list:
@@ -67,4 +65,3 @@ for shape in shape_list:
             shape = rotate(shape)
 
 print(max_sum)
-
