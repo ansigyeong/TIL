@@ -1,52 +1,44 @@
-import itertools
-import sys
-
-def cal(lines, a, b):
-    return lines[int(a)][int(b)]
-
-def bruteforce(lines, n):
-    count = n // 2
-    members = set(range(n))
-    teams = itertools.combinations(members, count)
-    min_result = 9999999
-
-    for team in teams:
-        start = set(list(team))
-        link = list(members - start)
-        start_total = 0
-        link_total = 0
-
-        # devide in half by containing 0 or not.
-        if team[0] != 0:
-            break
-
-        start = list(start)
-        # itertools return result by the generator object.
-        start_combi = itertools.combinations(start, 2)
-        for coms in start_combi:
-            start_total += cal(lines, coms[0], coms[1])
-
-        link_combi = itertools.combinations(link, 2)
-        for coml in link_combi:
-            link_total += cal(lines, coml[0], coml[1])
-
-        if abs(link_total - start_total) < min_result:
-            min_result = abs(link_total - start_total)
-
-    return min_result
+# D4 4613 러시아 국기 같은 깃발
+targets = ['W', 'B', 'R']
 
 
-if __name__ == "__main__":
-    n = int(sys.stdin.readline().strip())
-    lines = []
-    for i in range(n):
-        line = list(map(int, sys.stdin.readline().strip().split()))
-        lines.append(line)
+def dfs(idx, color, _sum):
+    global result
+    # 가치지기
+    if result <= _sum: return
+    # 결과 더하기
+    if idx >= N - 1:
+        result = _sum
+        return
+    # 다음색상까지, 넘어온게 흰색이라면  흰색, 파랑만
+    # 인덱스때문에 최댓값은 3으로 설정
+    for i in range(color, min(3, color + 2)):
+        temp = 0
+        # 마지막줄까지 왔는데 컬러가 흰색이라면 다음으로 넘어가기
+        if idx >= N - 2 and i == 0: continue
+        for j in Flag[idx]:
+            # 색상이 다른것들 카운트
+            if j != targets[i]: temp += 1
+        dfs(idx + 1, i, _sum + temp)
 
-    # the stats are collected in one place, so that you can be retrieved only once.
-    for i in range(n):
-        for j in range(n):
-            if j > i:
-                lines[i][j] = lines[i][j] + lines[j][i]
-                lines[j][i] = 0
-    print(bruteforce(lines, n))
+
+# 제일 윗줄과 아랫줄 체크하기
+def init():
+    global result
+    for i in Flag[0]:
+        if i != 'W': result += 1
+    for i in Flag[N - 1]:
+        if i != 'R': result += 1
+
+
+for t in range(1, int(input()) + 1):
+    # 입력받기
+    N, M = map(int, input().split())
+    Flag = [list(input()) for _ in range(N)]
+    # 최종 결과값
+    result = 987654
+    # 갯수 체크하기
+    dfs(1, 0, 0)
+    # 제일 위와 아래줄 체크하기
+    init()
+    print('#{} {}'.format(t, result))
