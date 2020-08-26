@@ -31,7 +31,7 @@ def init():
         if i != 'W':
             result += 1
     for i in flag[N-1]:
-        if i != 'B':
+        if i != 'R':
             result += 1
 
 T = int(input())
