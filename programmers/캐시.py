@@ -13,4 +13,5 @@ def solution(cacheSize, cities):
             cache.append(city)
             elapsed += 5
     
+    
     return elapsed
