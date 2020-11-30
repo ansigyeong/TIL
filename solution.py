@@ -1,22 +1,22 @@
-def solution(m, n, board):
-    board = [list(x) for x in board]
-    matched = True
-    while matched:
-        matched = []
-        for i in range(m-1):  # 높이
-            for j in range(n-1):  # 폭
-                if board[i][j] == board[i + 1][j] == board[i][j + 1] == board[i + 1][j + 1] != '#':
-                    matched.append([i, j])
+import datetime
 
-        for i, j in matched:
-            board[i][j] = board[i + 1][j] = board[i][j + 1] = board[i + 1][j + 1] = '#'
 
-        for _ in range(m):
-            for i in range(m - 1):
-                for j in range(n):
-                    if board[i + 1][j] == '#':
-                        board[i + 1][j], board[i][j] = board[i][j], '#'
-    print(sum(x.count('#') for x in board))
-    return sum(x.count('#') for x in board)
+def solution(lines):
+    # 로그의 시작, 종료 시각 저장
+    combined_logs = []
+    for log in lines:
+        logs = log.split(' ')
+        print(logs)
+        timestamp = datetime.datetime.strptime(logs[0] + ' ' + logs[1], "%Y-%m-%d %H:%M:%S.%f") # 시간 -> 문자열: strftime / 문자열 -> 시간: strptime
+        print(timestamp) 
+        timestamp = datetime.datetime.strptime(logs[0] + ' ' + logs[1], "%Y-%m-%d %H:%M:%S.%f").timestamp()
+        print(timestamp)
+        print('__________')
+    return
 
-solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"])
+
+
+solution([
+'2016-09-15 01:00:04.001 2.0s',
+'2016-09-15 01:00:07.000 2s'
+])
