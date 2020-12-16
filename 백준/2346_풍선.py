@@ -1,18 +1,18 @@
-from collections import deque
-
 N = int(input())
 
-data = map(int, input().split())
-data_list = []
-for idx, value in enumerate(data):
-    data_list.append((idx + 1, value))
+input_data = list(map(int, input().split()))
+balloon_data = []
 
-visit = [0 for _ in range(N)]
+for idx, value in enumerate(input_data):
+    balloon_data.append((idx+1), value)
+
+visit = [0 * N]
 
 answer = []
 now = 0
+
 for _ in range(N):
-    idx, step = data_list[now]
+    idx, step = balloon_data[now]
     answer.append(idx)
     visit[idx - 1] = 1
     while step != 0 and len(answer) != N:
