@@ -1,33 +1,29 @@
-from collections import deque
+def bfs(start):
+    visited = [start]
+    queue = [start]
+    while queue:
+        k = queue.pop(0)
+        for c in range(n+1):
+            if matrix[k][c] == 1 and c not in visited:
+                visited.append(c)
+                queue.append(c)
+    return visited
 
-N = int(input())
+def dfs(start, visited):
+    visited += [start]
+    for c in range(n+1):
+        if matrix[start][c] == 1 and (c not in visited):
+            dfs(c, visited)
+    return visited
 
-data = map(int, input().split())
-data_list = []
-for idx, value in enumerate(data):
-    data_list.append((idx + 1, value))
 
-visit = [0 for _ in range(N)]
+n, m, v = map(int, input().split()) #  정점의 개수, 간선의 개수, 탐색을 시작할 정점의 번호
+matrix = [[0 for _ in range(n+1)] for _ in range(n+1)]
+stack = []
+for _ in range(m):
+    i, j = map(int, input().split())
+    matrix[i][j] = matrix[j][i] = 1
 
-answer = []
-now = 0
-for _ in range(N):
-    idx, step = data_list[now]
-    answer.append(idx)
-    visit[idx - 1] = 1
-    while step != 0 and len(answer) != N:
-        if step > 0:
-            now += 1
-            now %= N
-        else:
-            now -= 1
-            now = -(abs(now) % N)
-        if visit[now]:
-            continue
-        if step > 0:
-            step -= 1
-        else:
-            step += 1
-    visit[now] = 1
 
-print(*answer)
+print(*dfs(v, []))
+print(*bfs(v))

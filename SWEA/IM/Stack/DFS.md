@@ -16,7 +16,7 @@
 
   *가장 마지막에 만났던 갈림길의 정점으로 되돌아가서 다시 깊이 우선 탐색을 반복해야 하므로 **후입선출 구조의 스택**을 사용함*
 
-![스크린샷 2020-03-03 오후 9.38.54](/Users/sigyeongan/Library/Application Support/typora-user-images/스크린샷 2020-03-03 오후 9.38.54.png)
+![dfs](images/dfs.png)
 
 *stack이 공백이 될 때까지 반복함*
 
@@ -36,7 +36,7 @@ DFS(v):
       v의 인접 정점 중 방문 안 한 w찾기
     }
     v <- pop(stack)
-  }while(v)s
+  }while(v)
 end DFS()
 ```
 
