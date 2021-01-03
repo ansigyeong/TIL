@@ -1,5 +1,6 @@
 def dfs(v, visit):
     visit += [v]
+    stack = []
 
 
 n, m = map(int, input().split()) # 세로, 가로
